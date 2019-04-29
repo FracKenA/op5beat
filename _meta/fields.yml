@@ -1,0 +1,1353 @@
+- key: op5beat
+  title: op5beat
+  description: Retrieves host status from OP5 Monitor
+  fields:
+    # - name: counter
+    #   type: long
+    #   required: true
+    #   description: >
+    #     PLEASE UPDATE DOCUMENTATION
+    - name: accept_passive_checks
+      type: boolean
+    - name: accept_passive_host_checks
+      type: boolean
+    - name: accept_passive_service_checks
+      type: boolean
+    - name: acknowledged
+      type: boolean
+    - name: active_checks_enabled
+      type: boolean
+    - name: can_submit_commands
+      type: boolean
+    - name: check_external_commands
+      type: boolean
+    - name: check_flapping_recovery_notification
+      type: boolean
+    - name: check_freshness
+      type: boolean
+    - name: check_host_freshness
+      type: boolean
+    - name: check_options
+      type: boolean
+    - name: check_service_freshness
+      type: boolean
+    - name: checks_enabled
+      type: boolean
+    - name: current_contact_can_submit_commands
+      type: boolean
+    - name: current_contact_host_notifications_enabled
+      type: boolean
+    - name: current_contact_in_host_notification_period
+      type: boolean
+    - name: current_contact_in_service_notification_period
+      type: boolean
+    - name: current_contact_service_notifications_enabled
+      type: boolean
+    - name: current_host_accept_passive_checks
+      type: boolean
+    - name: current_host_acknowledged
+      type: boolean
+    - name: current_host_active_checks_enabled
+      type: boolean
+    - name: current_host_check_flapping_recovery_notification
+      type: boolean
+    - name: current_host_check_freshness
+      type: boolean
+    - name: current_host_checks_enabled
+      type: boolean
+    - name: current_host_event_handler_enabled
+      type: boolean
+    - name: current_host_flap_detection_enabled
+      type: boolean
+    - name: current_host_has_been_checked
+      type: boolean
+    - name: current_host_in_check_period
+      type: boolean
+    - name: current_host_in_notification_period
+      type: boolean
+    - name: current_host_is_executing
+      type: boolean
+    - name: current_host_is_flapping
+      type: boolean
+    - name: current_host_no_more_notifications
+      type: boolean
+    - name: current_host_notifications_enabled
+      type: boolean
+    - name: current_host_obsess
+      type: boolean
+    - name: current_host_obsess_over_host
+      type: boolean
+    - name: current_host_pending_flex_downtime
+      type: boolean
+    - name: current_host_pnpgraph_present
+      type: boolean
+    - name: current_host_process_performance_data
+      type: boolean
+    - name: current_host_should_be_scheduled
+      type: boolean
+    - name: current_service_accept_passive_checks
+      type: boolean
+    - name: current_service_acknowledged
+      type: boolean
+    - name: current_service_active_checks_enabled
+      type: boolean
+    - name: current_service_check_freshness
+      type: boolean
+    - name: current_service_check_options
+      type: boolean
+    - name: current_service_checks_enabled
+      type: boolean
+    - name: current_service_event_handler_enabled
+      type: boolean
+    - name: current_service_flap_detection_enabled
+      type: boolean
+    - name: current_service_has_been_checked
+      type: boolean
+    - name: current_service_in_check_period
+      type: boolean
+    - name: current_service_in_notification_period
+      type: boolean
+    - name: current_service_is_executing
+      type: boolean
+    - name: current_service_is_flapping
+      type: boolean
+    - name: current_service_no_more_notifications
+      type: boolean
+    - name: current_service_notifications_enabled
+      type: boolean
+    - name: current_service_obsess
+      type: boolean
+    - name: current_service_obsess_over_service
+      type: boolean
+    - name: current_service_pnpgraph_present
+      type: boolean
+    - name: current_service_process_performance_data
+      type: boolean
+    - name: current_service_should_be_scheduled
+      type: boolean
+    - name: enable_event_handlers
+      type: boolean
+    - name: enable_flap_detection
+      type: boolean
+    - name: enable_notifications
+      type: boolean
+    - name: event_handler_enabled
+      type: boolean
+    - name: execute_host_checks
+      type: boolean
+    - name: execute_service_checks
+      type: boolean
+    - name: flap_detection_enabled
+      type: boolean
+    - name: has_been_checked
+      type: boolean
+    - name: host_accept_passive_checks
+      type: boolean
+    - name: host_acknowledged
+      type: boolean
+    - name: host_active_checks_enabled
+      type: boolean
+    - name: host_check_flapping_recovery_notification
+      type: boolean
+    - name: host_check_freshness
+      type: boolean
+    - name: host_checks_enabled
+      type: boolean
+    - name: host_event_handler_enabled
+      type: boolean
+    - name: host_flap_detection_enabled
+      type: boolean
+    - name: host_has_been_checked
+      type: boolean
+    - name: host_in_check_period
+      type: boolean
+    - name: host_in_notification_period
+      type: boolean
+    - name: host_is_executing
+      type: boolean
+    - name: host_is_flapping
+      type: boolean
+    - name: host_no_more_notifications
+      type: boolean
+    - name: host_notifications_enabled
+      type: boolean
+    - name: host_obsess
+      type: boolean
+    - name: host_obsess_over_host
+      type: boolean
+    - name: host_pending_flex_downtime
+      type: boolean
+    - name: host_pnpgraph_present
+      type: boolean
+    - name: host_process_performance_data
+      type: boolean
+    - name: host_should_be_scheduled
+      type: boolean
+    - name: in
+      type: boolean
+    - name: in_check_period
+      type: boolean
+    - name: in_host_notification_period
+      type: boolean
+    - name: in_notification_period
+      type: boolean
+    - name: in_service_notification_period
+      type: boolean
+    - name: is_executing
+      type: boolean
+    - name: is_flapping
+      type: boolean
+    - name: no_more_notifications
+      type: boolean
+    - name: notifications_enabled
+      type: boolean
+    - name: obsess
+      type: boolean
+    - name: obsess_over_host
+      type: boolean
+    - name: obsess_over_hosts
+      type: boolean
+    - name: obsess_over_service
+      type: boolean
+    - name: obsess_over_services
+      type: boolean
+    - name: pending_flex_downtime
+      type: boolean
+    - name: persistent
+      type: boolean
+    - name: pnpgraph_present
+      type: boolean
+    - name: process_performance_data
+      type: boolean
+    - name: service_accept_passive_checks
+      type: boolean
+    - name: service_acknowledged
+      type: boolean
+    - name: service_active_checks_enabled
+      type: boolean
+    - name: service_check_freshness
+      type: boolean
+    - name: service_check_options
+      type: boolean
+    - name: service_checks_enabled
+      type: boolean
+    - name: service_event_handler_enabled
+      type: boolean
+    - name: service_flap_detection_enabled
+      type: boolean
+    - name: service_has_been_checked
+      type: boolean
+    - name: service_in_check_period
+      type: boolean
+    - name: service_in_notification_period
+      type: boolean
+    - name: service_is_executing
+      type: boolean
+    - name: service_is_flapping
+      type: boolean
+    - name: service_no_more_notifications
+      type: boolean
+    - name: service_notifications_enabled
+      type: boolean
+    - name: service_obsess
+      type: boolean
+    - name: service_obsess_over_service
+      type: boolean
+    - name: service_pnpgraph_present
+      type: boolean
+    - name: service_process_performance_data
+      type: boolean
+    - name: service_should_be_scheduled
+      type: boolean
+    - name: should_be_scheduled
+      type: boolean
+    - name: current_host_last_check
+      type: date
+    - name: current_host_last_hard_state_change
+      type: date
+    - name: current_host_last_notification
+      type: date
+    - name: current_host_last_state_change
+      type: date
+    - name: current_host_last_time_down
+      type: date
+    - name: current_host_last_time_unreachable
+      type: date
+    - name: current_host_last_time_up
+      type: date
+    - name: current_host_next_check
+      type: date
+    - name: current_host_next_notification
+      type: date
+    - name: current_service_last_check
+      type: date
+    - name: current_service_last_hard_state_change
+      type: date
+    - name: current_service_last_notification
+      type: date
+    - name: current_service_last_state_change
+      type: date
+    - name: current_service_last_time_critical
+      type: date
+    - name: current_service_last_time_ok
+      type: date
+    - name: current_service_last_time_unknown
+      type: date
+    - name: current_service_last_time_warning
+      type: date
+    - name: current_service_next_check
+      type: date
+    - name: current_service_next_notification
+      type: date
+    - name: end_time
+      type: date
+    - name: entry_time
+      type: date
+    - name: expire_time
+      type: date
+    - name: host_last_check
+      type: date
+    - name: host_last_hard_state_change
+      type: date
+    - name: host_last_notification
+      type: date
+    - name: host_last_state_change
+      type: date
+    - name: host_last_time_down
+      type: date
+    - name: host_last_time_unreachable
+      type: date
+    - name: host_last_time_up
+      type: date
+    - name: host_next_check
+      type: date
+    - name: host_next_notification
+      type: date
+    - name: last_check
+      type: date
+    - name: last_command_check
+      type: date
+    - name: last_hard_state_change
+      type: date
+    - name: last_log_rotation
+      type: date
+    - name: last_notification
+      type: date
+    - name: last_state_change
+      type: date
+    - name: last_time_critical
+      type: date
+    - name: last_time_down
+      type: date
+    - name: last_time_ok
+      type: date
+    - name: last_time_unknown
+      type: date
+    - name: last_time_unreachable
+      type: date
+    - name: last_time_up
+      type: date
+    - name: last_time_warning
+      type: date
+    - name: next_check
+      type: date
+    - name: next_notification
+      type: date
+    - name: program_start
+      type: date
+    - name: service_last_check
+      type: date
+    - name: service_last_hard_state_change
+      type: date
+    - name: service_last_notification
+      type: date
+    - name: service_last_state_change
+      type: date
+    - name: service_last_time_critical
+      type: date
+    - name: service_last_time_ok
+      type: date
+    - name: service_last_time_unknown
+      type: date
+    - name: service_last_time_warning
+      type: date
+    - name: service_next_check
+      type: date
+    - name: service_next_notification
+      type: date
+    - name: start_time
+      type: date
+    - name: time
+      type: date
+    - name: check_interval
+      type: float
+    - name: connections_rate
+      type: float
+    - name: current_host_check_interval
+      type: float
+    - name: current_host_execution_time
+      type: float
+    - name: current_host_first_notification_delay
+      type: float
+    - name: current_host_high_flap_threshold
+      type: float
+    - name: current_host_latency
+      type: float
+    - name: current_host_low_flap_threshold
+      type: float
+    - name: current_host_notification_interval
+      type: float
+    - name: current_host_percent_state_change
+      type: float
+    - name: current_host_retry_interval
+      type: float
+    - name: current_host_staleness
+      type: float
+    - name: current_host_x_3d
+      type: float
+    - name: current_host_y_3d
+      type: float
+    - name: current_host_z_3d
+      type: float
+    - name: current_service_check_interval
+      type: float
+    - name: current_service_execution_time
+      type: float
+    - name: current_service_first_notification_delay
+      type: float
+    - name: current_service_high_flap_threshold
+      type: float
+    - name: current_service_latency
+      type: float
+    - name: current_service_low_flap_threshold
+      type: float
+    - name: current_service_notification_interval
+      type: float
+    - name: current_service_percent_state_change
+      type: float
+    - name: current_service_retry_interval
+      type: float
+    - name: current_service_staleness
+      type: float
+    - name: execution_time
+      type: float
+    - name: first_notification_delay
+      type: float
+    - name: forks_rate
+      type: float
+    - name: high_flap_threshold
+      type: float
+    - name: host_check_interval
+      type: float
+    - name: host_checks_rate
+      type: float
+    - name: host_execution_time
+      type: float
+    - name: host_first_notification_delay
+      type: float
+    - name: host_high_flap_threshold
+      type: float
+    - name: host_latency
+      type: float
+    - name: host_low_flap_threshold
+      type: float
+    - name: host_notification_interval
+      type: float
+    - name: host_percent_state_change
+      type: float
+    - name: host_retry_interval
+      type: float
+    - name: host_staleness
+      type: float
+    - name: host_x_3d
+      type: float
+    - name: host_y_3d
+      type: float
+    - name: host_z_3d
+      type: float
+    - name: latency
+      type: float
+    - name: livecheck_overflows_rate
+      type: float
+    - name: livechecks_rate
+      type: float
+    - name: log_messages_rate
+      type: float
+    - name: low_flap_threshold
+      type: float
+    - name: neb_callbacks_rate
+      type: float
+    - name: notification_interval
+      type: float
+    - name: percent_state_change
+      type: float
+    - name: requests_rate
+      type: float
+    - name: retry_interval
+      type: float
+    - name: service_check_interval
+      type: float
+    - name: service_checks_rate
+      type: float
+    - name: service_execution_time
+      type: float
+    - name: service_first_notification_delay
+      type: float
+    - name: service_high_flap_threshold
+      type: float
+    - name: service_latency
+      type: float
+    - name: service_low_flap_threshold
+      type: float
+    - name: service_notification_interval
+      type: float
+    - name: service_percent_state_change
+      type: float
+    - name: service_retry_interval
+      type: float
+    - name: service_staleness
+      type: float
+    - name: staleness
+      type: float
+    - name: x_3d
+      type: float
+    - name: y_3d
+      type: float
+    - name: z_3d
+      type: float
+    - name: acknowledgement_type
+      type: integer
+    - name: attempt
+      type: integer
+    - name: cached_log_messages
+      type: integer
+    - name: check_type
+      type: integer
+    - name: class
+      type: integer
+    - name: connections
+      type: integer
+    - name: current_attempt
+      type: integer
+    - name: current_command_id
+      type: integer
+    - name: current_contact_id
+      type: integer
+    - name: current_contact_modified_attributes
+      type: integer
+    - name: current_host_acknowledgement_type
+      type: integer
+    - name: current_host_check_options
+      type: integer
+    - name: current_host_check_type
+      type: integer
+    - name: current_host_current_attempt
+      type: integer
+    - name: current_host_current_notification_number
+      type: integer
+    - name: current_host_hard_state
+      type: integer
+    - name: current_host_hourly_value
+      type: integer
+    - name: current_host_id
+      type: integer
+    - name: current_host_initial_state
+      type: integer
+    - name: current_host_last_hard_state
+      type: integer
+    - name: current_host_last_state
+      type: integer
+    - name: current_host_max_check_attempts
+      type: integer
+    - name: current_host_modified_attributes
+      type: integer
+    - name: current_host_notified_on
+      type: integer
+    - name: current_host_num_services
+      type: integer
+    - name: current_host_num_services_crit
+      type: integer
+    - name: current_host_num_services_hard_crit
+      type: integer
+    - name: current_host_num_services_hard_ok
+      type: integer
+    - name: current_host_num_services_hard_unknown
+      type: integer
+    - name: current_host_num_services_hard_warn
+      type: integer
+    - name: current_host_num_services_ok
+      type: integer
+    - name: current_host_num_services_pending
+      type: integer
+    - name: current_host_num_services_unknown
+      type: integer
+    - name: current_host_num_services_warn
+      type: integer
+    - name: current_host_scheduled_downtime_depth
+      type: integer
+    - name: current_host_state
+      type: integer
+    - name: current_host_state_type
+      type: integer
+    - name: current_host_total_services
+      type: integer
+    - name: current_host_worst_service_hard_state
+      type: integer
+    - name: current_host_worst_service_state
+      type: integer
+    - name: current_notification_number
+      type: integer
+    - name: current_service_acknowledgement_type
+      type: integer
+    - name: current_service_check_type
+      type: integer
+    - name: current_service_current_attempt
+      type: integer
+    - name: current_service_current_notification_number
+      type: integer
+    - name: current_service_hourly_value
+      type: integer
+    - name: current_service_id
+      type: integer
+    - name: current_service_initial_state
+      type: integer
+    - name: current_service_last_hard_state
+      type: integer
+    - name: current_service_last_state
+      type: integer
+    - name: current_service_max_check_attempts
+      type: integer
+    - name: current_service_modified_attributes
+      type: integer
+    - name: current_service_notified_on
+      type: integer
+    - name: current_service_scheduled_downtime_depth
+      type: integer
+    - name: current_service_state
+      type: integer
+    - name: current_service_state_type
+      type: integer
+    - name: duration
+      type: integer
+    - name: entry_type
+      type: integer
+    - name: expires
+      type: integer
+    - name: fixed
+      type: integer
+    - name: forks
+      type: integer
+    - name: hard_state
+      type: integer
+    - name: host_acknowledgement_type
+      type: integer
+    - name: host_check_options
+      type: integer
+    - name: host_check_type
+      type: integer
+    - name: host_checks
+      type: integer
+    - name: host_current_attempt
+      type: integer
+    - name: host_current_notification_number
+      type: integer
+    - name: host_hard_state
+      type: integer
+    - name: host_hourly_value
+      type: integer
+    - name: host_id
+      type: integer
+    - name: host_initial_state
+      type: integer
+    - name: host_last_hard_state
+      type: integer
+    - name: host_last_state
+      type: integer
+    - name: host_max_check_attempts
+      type: integer
+    - name: host_modified_attributes
+      type: integer
+    - name: host_notified_on
+      type: integer
+    - name: host_num_services
+      type: integer
+    - name: host_num_services_crit
+      type: integer
+    - name: host_num_services_hard_crit
+      type: integer
+    - name: host_num_services_hard_ok
+      type: integer
+    - name: host_num_services_hard_unknown
+      type: integer
+    - name: host_num_services_hard_warn
+      type: integer
+    - name: host_num_services_ok
+      type: integer
+    - name: host_num_services_pending
+      type: integer
+    - name: host_num_services_unknown
+      type: integer
+    - name: host_num_services_warn
+      type: integer
+    - name: host_scheduled_downtime_depth
+      type: integer
+    - name: host_state
+      type: integer
+    - name: host_state_type
+      type: integer
+    - name: host_total_services
+      type: integer
+    - name: host_worst_service_hard_state
+      type: integer
+    - name: host_worst_service_state
+      type: integer
+    - name: hostgroup_id
+      type: integer
+    - name: hostgroup_num_hosts
+      type: integer
+    - name: hostgroup_num_hosts_down
+      type: integer
+    - name: hostgroup_num_hosts_pending
+      type: integer
+    - name: hostgroup_num_hosts_unreach
+      type: integer
+    - name: hostgroup_num_hosts_up
+      type: integer
+    - name: hostgroup_num_services
+      type: integer
+    - name: hostgroup_num_services_crit
+      type: integer
+    - name: hostgroup_num_services_hard_crit
+      type: integer
+    - name: hostgroup_num_services_hard_ok
+      type: integer
+    - name: hostgroup_num_services_hard_unknown
+      type: integer
+    - name: hostgroup_num_services_hard_warn
+      type: integer
+    - name: hostgroup_num_services_ok
+      type: integer
+    - name: hostgroup_num_services_pending
+      type: integer
+    - name: hostgroup_num_services_unknown
+      type: integer
+    - name: hostgroup_num_services_warn
+      type: integer
+    - name: hostgroup_worst_host_state
+      type: integer
+    - name: hostgroup_worst_service_hard_state
+      type: integer
+    - name: hostgroup_worst_service_state
+      type: integer
+    - name: hourly_value
+      type: integer
+    - name: id
+      type: integer
+    - name: initial_state
+      type: integer
+    - name: interval_length
+      type: integer
+    - name: is_service
+      type: integer
+    - name: last_hard_state
+      type: integer
+    - name: last_state
+      type: integer
+    - name: lineno
+      type: integer
+    - name: livecheck_overflows
+      type: integer
+    - name: livechecks
+      type: integer
+    - name: log_messages
+      type: integer
+    - name: max_check_attempts
+      type: integer
+    - name: modified_attributes
+      type: integer
+    - name: nagios_pid
+      type: integer
+    - name: neb_callbacks
+      type: integer
+    - name: notified_on
+      type: integer
+    - name: num_hosts
+      type: integer
+    - name: num_hosts_down
+      type: integer
+    - name: num_hosts_pending
+      type: integer
+    - name: num_hosts_unreach
+      type: integer
+    - name: num_hosts_up
+      type: integer
+    - name: num_services
+      type: integer
+    - name: num_services_crit
+      type: integer
+    - name: num_services_hard_crit
+      type: integer
+    - name: num_services_hard_ok
+      type: integer
+    - name: num_services_hard_unknown
+      type: integer
+    - name: num_services_hard_warn
+      type: integer
+    - name: num_services_ok
+      type: integer
+    - name: num_services_pending
+      type: integer
+    - name: num_services_unknown
+      type: integer
+    - name: num_services_warn
+      type: integer
+    - name: requests
+      type: integer
+    - name: scheduled_downtime_depth
+      type: integer
+    - name: service_acknowledgement_type
+      type: integer
+    - name: service_check_type
+      type: integer
+    - name: service_checks
+      type: integer
+    - name: service_current_attempt
+      type: integer
+    - name: service_current_notification_number
+      type: integer
+    - name: service_hourly_value
+      type: integer
+    - name: service_id
+      type: integer
+    - name: service_initial_state
+      type: integer
+    - name: service_last_hard_state
+      type: integer
+    - name: service_last_state
+      type: integer
+    - name: service_max_check_attempts
+      type: integer
+    - name: service_modified_attributes
+      type: integer
+    - name: service_notified_on
+      type: integer
+    - name: service_scheduled_downtime_depth
+      type: integer
+    - name: service_state
+      type: integer
+    - name: service_state_type
+      type: integer
+    - name: servicegroup_id
+      type: integer
+    - name: servicegroup_num_services
+      type: integer
+    - name: servicegroup_num_services_crit
+      type: integer
+    - name: servicegroup_num_services_hard_crit
+      type: integer
+    - name: servicegroup_num_services_hard_ok
+      type: integer
+    - name: servicegroup_num_services_hard_unknown
+      type: integer
+    - name: servicegroup_num_services_hard_warn
+      type: integer
+    - name: servicegroup_num_services_ok
+      type: integer
+    - name: servicegroup_num_services_pending
+      type: integer
+    - name: servicegroup_num_services_unknown
+      type: integer
+    - name: servicegroup_num_services_warn
+      type: integer
+    - name: servicegroup_worst_service_state
+      type: integer
+    - name: source
+      type: integer
+    - name: state
+      type: integer
+    - name: state_type
+      type: integer
+    - name: total_services
+      type: integer
+    - name: triggered_by
+      type: integer
+    - name: type
+      type: integer
+    - name: worst_host_state
+      type: integer
+    - name: worst_service_hard_state
+      type: integer
+    - name: worst_service_state
+      type: integer
+    - name: address
+      type: keyword
+    - name: alias
+      type: keyword
+    - name: check_command
+      type: keyword
+    - name: check_source
+      type: keyword
+    - name: command_name
+      type: keyword
+    - name: contact_name
+      type: keyword
+    - name: current_command_name
+      type: keyword
+    - name: current_contact_alias
+      type: keyword
+    - name: current_contact_name
+      type: keyword
+    - name: current_host_address
+      type: keyword
+    - name: current_host_alias
+      type: keyword
+    - name: current_host_check_command
+      type: keyword
+    - name: current_host_check_source
+      type: keyword
+    - name: current_host_display_name
+      type: keyword
+    - name: current_host_long_plugin_output
+      type: keyword
+    - name: current_host_name
+      type: keyword
+    - name: current_host_plugin_output
+      type: keyword
+    - name: current_service_check_command
+      type: keyword
+    - name: current_service_description
+      type: keyword
+    - name: current_service_display_name
+      type: keyword
+    - name: current_service_long_plugin_output
+      type: keyword
+    - name: current_service_notification_period
+      type: keyword
+    - name: current_service_plugin_output
+      type: keyword
+    - name: description
+      type: keyword
+    - name: display_name
+      type: keyword
+    - name: event_handler
+      type: keyword
+    - name: host_alias
+      type: keyword
+    - name: host_check_command
+      type: keyword
+    - name: host_display_name
+      type: keyword
+    - name: host_long_plugin_output
+      type: keyword
+    - name: host_name
+      type: keyword
+    - name: host_plugin_output
+      type: keyword
+    - name: hostgroup_alias
+      type: keyword
+    - name: hostgroup_name
+      type: keyword
+    - name: long_plugin_output
+      type: keyword
+    - name: name
+      type: keyword
+    - name: plugin_output
+      type: keyword
+    - name: service_check_command
+      type: keyword
+    - name: service_description
+      type: keyword
+    - name: service_display_name
+      type: keyword
+    - name: service_long_plugin_output
+      type: keyword
+    - name: service_plugin_output
+      type: keyword
+    - name: servicegroup_alias
+      type: keyword
+    - name: servicegroup_name
+      type: keyword
+    - name: childs
+      type: nested
+    - name: comments
+      type: nested
+    - name: comments_with_info
+      type: nested
+    - name: contact_groups
+      type: nested
+    - name: contacts
+      type: nested
+    - name: current_contact_custom_variable_names
+      type: nested
+    - name: current_contact_custom_variable_values
+      type: nested
+    - name: current_contact_custom_variables
+      type: nested
+    - name: current_contact_modified_attributes_list
+      type: nested
+    - name: current_host_childs
+      type: nested
+    - name: current_host_comments
+      type: nested
+    - name: current_host_comments_with_info
+      type: nested
+    - name: current_host_contact_groups
+      type: nested
+    - name: current_host_contacts
+      type: nested
+    - name: current_host_custom_variable_names
+      type: nested
+    - name: current_host_custom_variable_values
+      type: nested
+    - name: current_host_custom_variables
+      type: nested
+    - name: current_host_downtimes
+      type: nested
+    - name: current_host_downtimes_with_info
+      type: nested
+    - name: current_host_groups
+      type: nested
+    - name: current_host_modified_attributes_list
+      type: nested
+    - name: current_host_parents
+      type: nested
+    - name: current_host_services
+      type: nested
+    - name: current_host_services_with_info
+      type: nested
+    - name: current_host_services_with_state
+      type: nested
+    - name: current_service_comments
+      type: nested
+    - name: current_service_comments_with_info
+      type: nested
+    - name: current_service_contact_groups
+      type: nested
+    - name: current_service_contacts
+      type: nested
+    - name: current_service_custom_variable_names
+      type: nested
+    - name: current_service_custom_variable_values
+      type: nested
+    - name: current_service_custom_variables
+      type: nested
+    - name: current_service_downtimes
+      type: nested
+    - name: current_service_downtimes_with_info
+      type: nested
+    - name: current_service_groups
+      type: nested
+    - name: current_service_modified_attributes_list
+      type: nested
+    - name: custom_variable_names
+      type: nested
+    - name: custom_variables
+      type: nested
+    - name: days
+      type: nested
+    - name: downtimes
+      type: nested
+    - name: downtimes_with_info
+      type: nested
+    - name: exceptions_calendar_dates
+      type: nested
+    - name: exceptions_month_date
+      type: nested
+    - name: exceptions_month_day
+      type: nested
+    - name: exceptions_month_week_day
+      type: nested
+    - name: exceptions_week_day
+      type: nested
+    - name: exclusions
+      type: nested
+    - name: groups
+      type: nested
+    - name: host_childs
+      type: nested
+    - name: host_comments
+      type: nested
+    - name: host_comments_with_info
+      type: nested
+    - name: host_contact_groups
+      type: nested
+    - name: host_contacts
+      type: nested
+    - name: host_custom_variable_names
+      type: nested
+    - name: host_custom_variable_values
+      type: nested
+    - name: host_custom_variables
+      type: nested
+    - name: host_downtimes
+      type: nested
+    - name: host_downtimes_with_info
+      type: nested
+    - name: host_groups
+      type: nested
+    - name: host_modified_attributes_list
+      type: nested
+    - name: host_parents
+      type: nested
+    - name: host_services
+      type: nested
+    - name: host_services_with_info
+      type: nested
+    - name: host_services_with_state
+      type: nested
+    - name: hostgroup_members
+      type: nested
+    - name: hostgroup_members_with_state
+      type: nested
+    - name: members
+      type: nested
+    - name: members_with_state
+      type: nested
+    - name: modified_attributes_list
+      type: nested
+    - name: parents
+      type: nested
+    - name: service_comments
+      type: nested
+    - name: service_comments_with_info
+      type: nested
+    - name: service_contact_groups
+      type: nested
+    - name: service_contacts
+      type: nested
+    - name: service_custom_variable_names
+      type: nested
+    - name: service_custom_variable_values
+      type: nested
+    - name: service_custom_variables
+      type: nested
+    - name: service_downtimes
+      type: nested
+    - name: service_downtimes_with_info
+      type: nested
+    - name: service_groups
+      type: nested
+    - name: service_modified_attributes_list
+      type: nested
+    - name: servicegroup_members
+      type: nested
+    - name: servicegroup_members_with_state
+      type: nested
+    - name: services
+      type: nested
+    - name: services_with_info
+      type: nested
+    - name: services_with_state
+      type: nested
+    - name: action_url
+      type: text
+    - name: action_url_expanded
+      type: text
+    - name: address1
+      type: text
+    - name: address2
+      type: text
+    - name: address3
+      type: text
+    - name: address4
+      type: text
+    - name: address5
+      type: text
+    - name: address6
+      type: text
+    - name: author
+      type: text
+    - name: check_period
+      type: text
+    - name: comment
+      type: text
+    - name: current_command_line
+      type: text
+    - name: current_contact_address1
+      type: text
+    - name: current_contact_address2
+      type: text
+    - name: current_contact_address3
+      type: text
+    - name: current_contact_address4
+      type: text
+    - name: current_contact_address5
+      type: text
+    - name: current_contact_address6
+      type: text
+    - name: current_contact_email
+      type: text
+    - name: current_contact_host_notification_period
+      type: text
+    - name: current_contact_pager
+      type: text
+    - name: current_contact_service_notification_period
+      type: text
+    - name: current_host_action_url
+      type: text
+    - name: current_host_action_url_expanded
+      type: text
+    - name: current_host_check_period
+      type: text
+    - name: current_host_event_handler
+      type: text
+    - name: current_host_filename
+      type: text
+    - name: current_host_icon_image
+      type: text
+    - name: current_host_icon_image_alt
+      type: text
+    - name: current_host_icon_image_expanded
+      type: text
+    - name: current_host_notes
+      type: text
+    - name: current_host_notes_expanded
+      type: text
+    - name: current_host_notes_url
+      type: text
+    - name: current_host_notes_url_expanded
+      type: text
+    - name: current_host_notification_period
+      type: text
+    - name: current_host_perf_data
+      type: text
+    - name: current_host_statusmap_image
+      type: text
+    - name: current_service_action_url
+      type: text
+    - name: current_service_action_url_expanded
+      type: text
+    - name: current_service_check_period
+      type: text
+    - name: current_service_check_source
+      type: text
+    - name: current_service_event_handler
+      type: text
+    - name: current_service_icon_image
+      type: text
+    - name: current_service_icon_image_alt
+      type: text
+    - name: current_service_icon_image_expanded
+      type: text
+    - name: current_service_notes
+      type: text
+    - name: current_service_notes_expanded
+      type: text
+    - name: current_service_notes_url
+      type: text
+    - name: current_service_notes_url_expanded
+      type: text
+    - name: current_service_perf_data
+      type: text
+    - name: email
+      type: text
+    - name: filename
+      type: text
+    - name: host_action_url
+      type: text
+    - name: host_action_url_expanded
+      type: text
+    - name: host_address
+      type: text
+    - name: host_check_period
+      type: text
+    - name: host_check_source
+      type: text
+    - name: host_event_handler
+      type: text
+    - name: host_filename
+      type: text
+    - name: host_icon_image
+      type: text
+    - name: host_icon_image_alt
+      type: text
+    - name: host_icon_image_expanded
+      type: text
+    - name: host_notes
+      type: text
+    - name: host_notes_expanded
+      type: text
+    - name: host_notes_url
+      type: text
+    - name: host_notes_url_expanded
+      type: text
+    - name: host_notification_period
+      type: text
+    - name: host_perf_data
+      type: text
+    - name: host_statusmap_image
+      type: text
+    - name: hostgroup_action_url
+      type: text
+    - name: hostgroup_notes
+      type: text
+    - name: hostgroup_notes_url
+      type: text
+    - name: icon_image
+      type: text
+    - name: icon_image_alt
+      type: text
+    - name: icon_image_expanded
+      type: text
+    - name: line
+      type: text
+    - name: livestatus_version
+      type: text
+    - name: message
+      type: text
+    - name: notes
+      type: text
+    - name: notes_expanded
+      type: text
+    - name: notes_url
+      type: text
+    - name: notes_url_expanded
+      type: text
+    - name: notification_period
+      type: text
+    - name: options
+      type: text
+    - name: pager
+      type: text
+    - name: perf_data
+      type: text
+    - name: program_version
+      type: text
+    - name: service_action_url
+      type: text
+    - name: service_action_url_expanded
+      type: text
+    - name: service_check_period
+      type: text
+    - name: service_check_source
+      type: text
+    - name: service_event_handler
+      type: text
+    - name: service_icon_image
+      type: text
+    - name: service_icon_image_alt
+      type: text
+    - name: service_icon_image_expanded
+      type: text
+    - name: service_notes
+      type: text
+    - name: service_notes_expanded
+      type: text
+    - name: service_notes_url
+      type: text
+    - name: service_notes_url_expanded
+      type: text
+    - name: service_notification_period
+      type: text
+    - name: service_perf_data
+      type: text
+    - name: servicegroup_action_url
+      type: text
+    - name: servicegroup_notes
+      type: text
+    - name: servicegroup_notes_url
+      type: text
+    - name: statusmap_image
+      type: text
+    - name: table
+      type: text

@@ -1,0 +1,57 @@
+################### Op5beat Configuration Example #########################
+
+############################# Op5beat ######################################
+
+op5beat:
+  # How often to query livestatus for data. The default is 30s.
+  period: 30s
+
+  # When Querying livestatus, how fresh should the last check be? The default is 30
+
+  lastCheck: 30
+
+  # The host and port where livestatus is listening.
+  op5Host: "/opt/monitor/var/rw/live"
+
+  # The connection type to use for livestatus (unix or tcp)
+  op5Connect: "unix"
+
+  # Which livestatus table to query
+  query: "services"
+
+  # The columns of data you want to retrieve. At a minimum, the following fields must be included:
+  # ["host_name", "display_name", "state",  "plugin_output", "perf_data"]
+  columns: ["host_name", "display_name", "state", "plugin_output", "long_plugin_output", "percent_state_change", "perf_data"]
+
+  # Boolean Value Columns
+  boolColumns: []
+
+  # Integer Value Columns
+  intColumns: []
+
+  # Time Value Columns
+  timeColumns: []
+
+  # Float Value Columns
+  floatColumns: []
+
+  # S
+
+  # (Optional) An array of filters to apply to the query.
+  # By default a query must pass all filters, but 'And: x' or 'Or: x' commands can be used,
+  # where x specifies the number of previous filter lines to apply the operator to.
+  # Ex. ["state = 1", "state = 3", "Or: 2" ] matches anything with a state of 1 OR 3.
+  #filter: ["checks_enabled = 1", "host_state = 0"]
+
+  # Whether or not to split up the perfdata into individual metrics. This will create additional fields such as
+  # [cpu][value], [cpu][min], [cpu][max], etc. for each parameter in the performance data. Default is true.
+  #metrics: true
+
+  # If enabled, only perfdata for the specified services will be reported. Default is to include metrics for all services.
+  #metrics_allow: ["CPU Utilization", "Disk IO", "Memory", "Interface"]
+
+  # If enabled, perfdata for the specified services will not be reported. Default is to include metrics for all services.
+  #metrics_block: ["Uptime", "System Time", "Log"]
+
+  # Whether to report just the 'value' field of the perfdata metrics, or whether to include the min / max / warn / crit
+  # fields as well. Default is tr
