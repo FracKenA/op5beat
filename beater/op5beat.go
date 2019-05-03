@@ -128,9 +128,11 @@ func (bt *Op5beat) lsQuery(lshost string, beatname string) error {
 
 	var metrics = bt.config.Metrics
 
+	columnString := strings.Join(bt.config.Columns, " ")
+
 	l := livestatus.NewClient(bt.config.Op5connect, bt.config.Op5host)
 	q := livestatus.NewQuery(bt.config.Query)
-	q.Columns(bt.config.Columns)
+	q.Columns(columnString)
 	q.Filter(timeFilter)
 
 	if len(bt.config.Filter) > 0 {
@@ -166,33 +168,32 @@ func (bt *Op5beat) lsQuery(lshost string, beatname string) error {
 		var colData map[string]string
 		colData = make(map[string]string)
 
-		/*
-			var colData map[string]string
-			colData = make(map[string]string)
-			for _, c := range bt.config.Columns {
-				var data interface{}
-				data, err = r.Get(c)
-				if err != nil {
-					logp.Warn("Problem parsing response fields: %s", err)
-				}
-				if strData, ok := data.(string); ok {
-					colData[c] = strData
-					event[c] = strData
-				} else {
-					strData := fmt.Sprint(data)
-					colData[c] = strData
-					event[c] = strData
-				}
-			}
-		*/
 		for _, c := range bt.config.Columns {
 			var data interface{}
 			data, err = helpers.GetWithCorrectDataType(r, c)
 			if err != nil {
-				fmt.Println(err)
+				logp.Warn("Problem parsing response fields: %s", err)
 			}
-			event[c] = data
+			if strData, ok := data.(string); ok {
+				colData[c] = strData
+				event[c] = strData
+			} else {
+				strData := fmt.Sprint(data)
+				colData[c] = strData
+				event[c] = strData
+			}
 		}
+
+		/*
+			for _, c := range bt.config.Columns {
+				var data interface{}
+				data, err = helpers.GetWithCorrectDataType(r, c)
+				if err != nil {
+					fmt.Println(err)
+				}
+				event[c] = data
+			}
+		*/
 
 		if metrics {
 			var allow = true
