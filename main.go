@@ -4,8 +4,6 @@ import (
 	"os"
 
 	"github.com/FracKenA/op5beat/cmd"
-
-	_ "github.com/FracKenA/op5beat/include"
 )
 
 func main() {

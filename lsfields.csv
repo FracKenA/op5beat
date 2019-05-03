@@ -624,7 +624,8 @@ host_check_source,GetString
 host_event_handler,GetString
 host_filename,GetString
 host_icon_image,GetString
-host_icon_image_alt,GetString
+host_icon_image_alt, GetString
+
 host_icon_image_expanded,GetString
 host_notes,GetString
 host_notes_expanded,GetString

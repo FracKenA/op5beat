@@ -3,6 +3,7 @@ package beater
 import (
 	"fmt"
 	"github.com/FracKenA/op5beat/config"
+	"github.com/FracKenA/op5beat/helpers"
 	"github.com/elastic/beats/dev-tools/mage"
 	"github.com/elastic/beats/libbeat/beat"
 	"github.com/elastic/beats/libbeat/common"
@@ -95,33 +96,30 @@ func (bt *Op5beat) Run(b *beat.Beat) error {
 		case <-ticker.C:
 		}
 
-
-
 		err := bt.lsQuery(bt.config.Op5host, mage.BeatName)
 		if err != nil {
 			logp.Warn("error: There was an error collecting livestatus", err)
 			return err
 		}
 
-
 	}
 
 	/*
-		event := beat.Event{
-			Timestamp: time.Now(),
-			Fields: common.MapStr{
-				"type":    b.Info.Name,
-				"counter": counter,
-			},
+			event := beat.Event{
+				Timestamp: time.Now(),
+				Fields: common.MapStr{
+					"type":    b.Info.Name,
+					"counter": counter,
+				},
+			}
+			bt.client.Publish(event)
+			logp.Info("Event sent")
+			counter++
 		}
-		bt.client.Publish(event)
-		logp.Info("Event sent")
-		counter++
-	}
 	*/
 }
 
-func (bt *Op5beat) lsQuery(lshost string, beatname string) error{
+func (bt *Op5beat) lsQuery(lshost string, beatname string) error {
 
 	start := time.Now()
 	count := 30
@@ -158,7 +156,6 @@ func (bt *Op5beat) lsQuery(lshost string, beatname string) error{
 
 	numRecords := 0
 
-
 	for _, r := range resp.Records {
 
 		event := common.MapStr{
@@ -166,24 +163,15 @@ func (bt *Op5beat) lsQuery(lshost string, beatname string) error{
 			"type":       beatname,
 		}
 
-
-		var colData map[string]string
-		colData = make(map[string]string)
-		for _, c := range bt.config.Columns {
+		for _, c := range columns {
 			var data interface{}
-			data, err = r.Get(c)
+			data, err = helpers.GetWithCorrectDataType(r, c)
 			if err != nil {
-				logp.Warn("Problem parsing response fields: %s", err)
+				fmt.Println(err)
 			}
-			if strData, ok := data.(string); ok {
-				colData[c] = strData
-				event[c] = strData
-			} else {
-				strData := fmt.Sprint(data)
-				colData[c] = strData
-				event[c] = strData
-			}
+			event[c] = data
 		}
+
 		if metrics {
 			var allow = true
 			if len(bt.config.MetricsAllow) > 0 {
@@ -237,7 +225,7 @@ func (bt *Op5beat) lsQuery(lshost string, beatname string) error{
 										num = re.FindString(data)
 									}
 									mItem := common.MapStr{
-										item:   num,
+										item: num,
 									}
 									serviceMap = common.MapStrUnion(serviceMap, mItem)
 								}
@@ -245,7 +233,7 @@ func (bt *Op5beat) lsQuery(lshost string, beatname string) error{
 						}
 					}
 					event["metrics"] = common.MapStr{
-						uName:  serviceMap,
+						uName: serviceMap,
 					}
 				}
 			}
@@ -255,4 +243,3 @@ func (bt *Op5beat) lsQuery(lshost string, beatname string) error{
 
 	}
 }
-
