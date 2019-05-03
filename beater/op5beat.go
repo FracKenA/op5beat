@@ -163,7 +163,29 @@ func (bt *Op5beat) lsQuery(lshost string, beatname string) error {
 			"type":       beatname,
 		}
 
-		for _, c := range columns {
+		var colData map[string]string
+		colData = make(map[string]string)
+
+		/*
+			var colData map[string]string
+			colData = make(map[string]string)
+			for _, c := range bt.config.Columns {
+				var data interface{}
+				data, err = r.Get(c)
+				if err != nil {
+					logp.Warn("Problem parsing response fields: %s", err)
+				}
+				if strData, ok := data.(string); ok {
+					colData[c] = strData
+					event[c] = strData
+				} else {
+					strData := fmt.Sprint(data)
+					colData[c] = strData
+					event[c] = strData
+				}
+			}
+		*/
+		for _, c := range bt.config.Columns {
 			var data interface{}
 			data, err = helpers.GetWithCorrectDataType(r, c)
 			if err != nil {
