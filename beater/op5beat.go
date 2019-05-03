@@ -103,20 +103,6 @@ func (bt *Op5beat) Run(b *beat.Beat) error {
 		}
 
 	}
-
-	/*
-			event := beat.Event{
-				Timestamp: time.Now(),
-				Fields: common.MapStr{
-					"type":    b.Info.Name,
-					"counter": counter,
-				},
-			}
-			bt.client.Publish(event)
-			logp.Info("Event sent")
-			counter++
-		}
-	*/
 }
 
 func (bt *Op5beat) lsQuery(lshost string, beatname string) error {
@@ -160,7 +146,7 @@ func (bt *Op5beat) lsQuery(lshost string, beatname string) error {
 
 	for _, r := range resp.Records {
 
-		event := common.MapStr{
+		params := common.MapStr{
 			"@timestamp": common.Time(time.Now()),
 			"type":       beatname,
 		}
@@ -176,25 +162,17 @@ func (bt *Op5beat) lsQuery(lshost string, beatname string) error {
 			}
 			if strData, ok := data.(string); ok {
 				colData[c] = strData
-				event[c] = strData
+				params[c] = strData
 			} else {
 				strData := fmt.Sprint(data)
 				colData[c] = strData
-				event[c] = strData
+				params[c] = strData
 			}
 		}
 
-		/*
-			for _, c := range bt.config.Columns {
-				var data interface{}
-				data, err = helpers.GetWithCorrectDataType(r, c)
-				if err != nil {
-					fmt.Println(err)
-				}
-				event[c] = data
-			}
-		*/
-
+		event := beat.Event{
+			Fields: params,
+		}
 		if metrics {
 			var allow = true
 			if len(bt.config.MetricsAllow) > 0 {
@@ -255,14 +233,17 @@ func (bt *Op5beat) lsQuery(lshost string, beatname string) error {
 							}
 						}
 					}
-					event["metrics"] = common.MapStr{
+					event.Meta = common.MapStr{
 						uName: serviceMap,
 					}
 				}
 			}
 		}
+
 		bt.client.Publish(event)
+
 		numRecords++
 
 	}
+	return nil
 }
