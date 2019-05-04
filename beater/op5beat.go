@@ -114,11 +114,9 @@ func (bt *Op5beat) lsQuery(lshost string, beatname string) error {
 
 	var metrics = bt.config.Metrics
 
-	columnString := strings.Join(bt.config.Columns, " ")
-
 	l := livestatus.NewClient(bt.config.Op5connect, bt.config.Op5host)
 	q := livestatus.NewQuery(bt.config.Query)
-	q.Columns(columnString)
+	q.Columns(bt.config.Columns...)
 	q.Filter(timeFilter)
 
 	if len(bt.config.Filter) > 0 {
