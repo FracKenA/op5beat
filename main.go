@@ -1,13 +1,10 @@
 package main
 
 import (
-	"os"
-
-	"github.com/FracKenA/op5beat/cmd"
+	"github.com/elastic/beats/libbeat/beat"
+	"github.com/FracKenA/op5beat/beater"
 )
 
 func main() {
-	if err := cmd.RootCmd.Execute(); err != nil {
-		os.Exit(1)
-	}
+	beat.Run("op5beat", "", beater.New)
 }

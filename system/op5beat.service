@@ -1,0 +1,11 @@
+[Unit]
+Description=op5beat
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+ExecStart=/usr/share/op5beat/bin/op5beat -c /etc/op5beat/op5beat.yml -path.home /usr/share/op5beat -path.config /etc/op5beat -path.data /var/lib/op5beat -path.logs /var/log/op5beat
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

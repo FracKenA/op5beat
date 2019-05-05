@@ -32,3 +32,4 @@ var DefaultConfig = Config{
 	MetricsBlock:   nil,
 	MetricsValOnly: true,
 }
+

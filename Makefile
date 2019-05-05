@@ -1,40 +1,62 @@
-BEAT_NAME=op5beat
-BEAT_PATH=github.com/FracKenA/op5beat
-BEAT_GOPATH=$(firstword $(subst :, ,${GOPATH}))
-SYSTEM_TESTS=false
-TEST_ENVIRONMENT=false
+BEATNAME=op5beat
+BEATDIR=github.com/FracKenA/op5beat
 ES_BEATS?=./vendor/github.com/elastic/beats
-LIBBEAT_MAKEFILE=$(ES_BEATS)/libbeat/scripts/Makefile
-GOPACKAGES=$(shell govendor list -no-status +local)
-GOBUILD_FLAGS=-i -ldflags "-X $(BEAT_PATH)/vendor/github.com/elastic/beats/libbeat/version.buildTime=$(NOW) -X $(BEAT_PATH)/vendor/github.com/elastic/beats/libbeat/version.commit=$(COMMIT_ID)"
-MAGE_IMPORT_PATH=${BEAT_PATH}/vendor/github.com/magefile/mage
-NO_COLLECT=true
+GOPACKAGES=$(shell glide novendor)
+PREFIX?=.
 
 # Path to the libbeat Makefile
--include $(LIBBEAT_MAKEFILE)
+-include $(ES_BEATS)/libbeat/scripts/Makefile
+.PHONY: deps
+deps:
+	glide up
+	
+.PHONY: config
+config:
+	echo "Update config file"
+	-rm -f ${BEATNAME}.yml
+	cat etc/beat.yml etc/config.yml | sed -e "s/beatname/${BEATNAME}/g" > ${BEATNAME}.yml
+	-rm -f ${BEATNAME}.full.yml
+	cat etc/beat.yml etc/config.full.yml | sed -e "s/beatname/${BEATNAME}/g" > ${BEATNAME}.full.yml
 
-# Initial beat setup
-.PHONY: setup
-setup: pre-setup git-add
+	# Update doc
+	python ${ES_BEATS}/libbeat/scripts/generate_fields_docs.py $(PWD) ${BEATNAME} ${ES_BEATS}
 
-pre-setup: copy-vendor git-init
-	$(MAKE) -f $(LIBBEAT_MAKEFILE) mage ES_BEATS=$(ES_BEATS)
-	$(MAKE) -f $(LIBBEAT_MAKEFILE) update BEAT_NAME=$(BEAT_NAME) ES_BEATS=$(ES_BEATS) NO_COLLECT=$(NO_COLLECT)
+	# Generate index templates
+	python ${ES_BEATS}/libbeat/scripts/generate_template.py $(PWD) ${BEATNAME} ${ES_BEATS}
+	python ${ES_BEATS}/libbeat/scripts/generate_template.py --es2x $(PWD) ${BEATNAME} ${ES_BEATS}
 
-# Copy beats into vendor directory
-.PHONY: copy-vendor
-copy-vendor:
-	mkdir -p vendor/github.com/elastic
-	cp -R ${BEAT_GOPATH}/src/github.com/elastic/beats vendor/github.com/elastic/
-	rm -rf vendor/github.com/elastic/beats/.git vendor/github.com/elastic/beats/x-pack
-	mkdir -p vendor/github.com/magefile
-	cp -R ${BEAT_GOPATH}/src/github.com/elastic/beats/vendor/github.com/magefile/mage vendor/github.com/magefile
+	# Update docs version
+	cp ${ES_BEATS}/libbeat/docs/version.asciidoc docs/version.asciidoc
 
-.PHONY: git-init
-git-init:
-	git init
+	# Generate index-pattern
+	echo "Generate index pattern"
+	-rm -f $(PWD)/etc/kibana/index-pattern/${BEATNAME}.json
+	mkdir -p $(PWD)/etc/kibana/index-pattern
+	python ${ES_BEATS}/libbeat/scripts/generate_index_pattern.py --index ${BEATNAME}-* --libbeat ${ES_BEATS}/libbeat --beat $(PWD)
 
-.PHONY: git-add
-git-add:
-	git add -A
-	git commit -m "Add generated op5beat files"
+
+.PHONY: install
+install:
+	mkdir -p /etc/$(BEATNAME)
+	mkdir -p /usr/share/$(BEATNAME)/bin
+	mkdir -p /var/lib/$(BEATNAME)
+	mkdir -p /var/log/$(BEATNAME)
+	cp $(BEATNAME) /usr/share/$(BEATNAME)/bin/.
+	cp *.yml /etc/$(BEATNAME)/.
+	cp *.json /etc/$(BEATNAME)/.
+	cp system/$(BEATNAME).service /usr/lib/systemd/system/.
+	systemctl enable $(BEATNAME).service
+
+.PHONY: uninstall
+uninstall:
+	systemctl disable $(BEATNAME).service
+	rm /usr/lib/systemd/system/$(BEATNAME).service
+	rm -rf /var/log/$(BEATNAME)
+	rm -rf /var/lib/$(BEATNAME)
+	rm -rf /usr/share/$(BEATNAME)
+	rm -rf /etc/$(BEATNAME)
+	
+.PHONY: all
+all:
+	make deps
+	make op5beat
