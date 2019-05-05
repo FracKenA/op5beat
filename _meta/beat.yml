@@ -40,4 +40,33 @@ op5beat:
   #metrics_block: ["Uptime", "System Time", "Log"]
 
   # Whether to report just the 'value' field of the perfdata metrics, or whether to include the min / max / warn / crit
-  # fields as well. Default is tr
+  # fields as well. Default is true.
+  #metrics_value_only: true
+
+output.elasticsearch:
+  # Boolean flag to enable or disable the output module.
+  enabled: true
+
+  # Array of hosts to connect to.
+  hosts: ["op5la.domain.tld:9200"]
+
+  # Optional protocol and basic auth credentials.
+  #protocol: "http"
+  username: "logserver"
+  password: "logserver"
+
+  # Optional index name. The default is "cmkbeat" plus date
+  # and generates [cmkbeat-]YYYY.MM.DD keys.
+  index: "op5beat-%{+yyyy.MM.dd}"
+
+  # Set to false to disable template loading.
+  template.enabled: true
+
+  # Template name. By default the template name is cmkbeat.
+  template.name: "op5beat"
+
+  # Path to template file
+  template.path: "${path.config}/op5beat.template.json"
+
+  # Overwrite existing template
+  template.overwrite: true
