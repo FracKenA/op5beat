@@ -12,7 +12,6 @@ import (
 	"github.com/elastic/beats/libbeat/logp"
 	"github.com/elastic/beats/libbeat/publisher"
 
-	"../helpers"
 	"github.com/FracKenA/op5beat/config"
 	"github.com/FracKenA/op5beat/lsfields"
 	"github.com/vbatoufflet/go-livestatus"
